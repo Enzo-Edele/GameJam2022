@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateScore(int point, int index)
+    public void UpdateScore(int point)
     {
         score += point;
         UIManager.Instance.UpadateScore(point);

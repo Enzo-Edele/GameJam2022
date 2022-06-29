@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour
    
     [SerializeField] GameObject             projectile;
     Rigidbody2D                             rb;
+    public int                              score;
+    public float                            multiplyer;
     public float                            speed;
     public float                            force;
     Vector2 originalSpeed = new Vector2(2, -2);
@@ -25,6 +27,7 @@ public class Projectile : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        GameManager.Instance.UpdateScore(score);
         GameObject.Destroy(projectile);
     }
 }

@@ -135,5 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 3777149953932976351}
+  score: 100
+  multiplyer: 0
   speed: 0
   force: 0
