@@ -11,17 +11,22 @@ public class ProjectileSpawner : MonoBehaviour
 
     void Start()
     {
-        
+        timerSpawn = Random.Range(timeSpawnMin, timeSpawnMax);
     }
 
     void Update()
     {
-        Spawn();
+        if(timerSpawn > 0 && GameManager.GameStates.InGame == GameManager.GameState)
+            timerSpawn -= Time.deltaTime;
+        else if(timerSpawn <= 0)
+        {
+            timerSpawn = Random.Range(timeSpawnMin, timeSpawnMax);
+            Spawn();
+        }
     }
     void Spawn()
     {
         int direction = Random.Range(1, 4);
-        Debug.Log("rnd dir : " + direction);
 
         Vector2 spawn;
         if(direction == 1)

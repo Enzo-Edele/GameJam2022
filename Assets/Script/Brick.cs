@@ -16,8 +16,7 @@ public class Brick : MonoBehaviour
         if (isSpine)
             GetComponent<SpriteRenderer>().color = Color.red;
     }
-
-    private void OnMouseDown()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         Hit();
     }

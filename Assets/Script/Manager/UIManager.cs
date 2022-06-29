@@ -81,11 +81,11 @@ public class UIManager : MonoBehaviour
     public void UpadateScore(int point)
     {
         scoreText.text = "Score : " + GameManager.Instance.score;
-        /*if (point > 0)
+        if (point > 0)
         {
-            textAnimator.SetTrigger("add");
+            textAnimator.SetTrigger("Add");
             scoreAddText.text = "+" + point;
-        }*/
+        }
     }
 
     
@@ -94,7 +94,7 @@ public class UIManager : MonoBehaviour
     {
         DeactivateMenu();
         SoundManager.Instance.Play("Button");
-        GameManager.Instance.ChangeGameState(GameManager.GameStates.InMenu);
+        GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
         //active gameObject
         //deactive menuObject
     }
