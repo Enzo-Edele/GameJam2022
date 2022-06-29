@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour
     public int maxLives;
     public int lives;
     public int score;
+
+    public SpriteRenderer brick;
+    public float brickWidth;
+    public float brickHeight;
+
     #endregion
 
     public enum GameStates
@@ -31,6 +36,8 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        brickHeight = brick.bounds.size.y;
+        brickWidth = brick.bounds.size.x;
         ChangeGameState(GameStates.InMenu);
     }
 
