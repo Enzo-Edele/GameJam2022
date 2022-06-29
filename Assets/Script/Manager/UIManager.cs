@@ -9,46 +9,25 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     #region Declaration
-    [SerializeField] GameObject mainMenu;
-    [SerializeField] GameObject saveMenu;
-    [SerializeField] Text saveText;
-    [SerializeField] GameObject newGameButton;
-    [SerializeField] GameObject loadButton;
-    [SerializeField] List<Button> loadButtons;
-    [SerializeField] GameObject levelMenu;
-    [SerializeField] List<Button> LevelButtons;
-    [SerializeField] List<Text> highScores;
-    [SerializeField] List<Vector3> starRequirement;
-    [SerializeField] List<Image> starLvl;
-    [SerializeField] List<Sprite> starImage;
-    [SerializeField] GameObject endLevel;
-    [SerializeField] GameObject endLevelButtons;
-    [SerializeField] GameObject retryButton;
-    [SerializeField] GameObject endLevelNextLevelButton;
-    [SerializeField] GameObject endLevelButtonLevel;
-    [SerializeField] GameObject endLevelButtonMain;
-    [SerializeField] GameObject endLevelButtonCredits;
+    [SerializeField] GameObject menu;
+    [SerializeField] GameObject menuGameOver;
+    [SerializeField] GameObject credits;
 
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject optionMenu;
 
-    [SerializeField] GameObject icon;
-    [SerializeField] Text IconText;  //ou TMP_Text
-    [SerializeField] GameObject chrono;
-    [SerializeField] TMP_Text chronometerText;
+    
     [SerializeField] GameObject score;
     [SerializeField] TMP_Text scoreText;
     [SerializeField] Animator textAnimator;
     [SerializeField] TMP_Text scoreAddText;
-    [SerializeField] GameObject LivesDisplay;
-    [SerializeField] List<Image> lives;
-    [SerializeField] Sprite live, emptylive;
     #endregion
 
     public static UIManager Instance { get; private set; }
     void Awake()
     {
         Instance = this;
+        ActivateMenu();
     }
 
     void Update()
@@ -56,47 +35,15 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public void ActivateMainMenu() //main menu
+    public void ActivateMenu() //main menu
     {
-        mainMenu.SetActive(true);
+        menu.SetActive(true);
     }
-    public void DeactivateMainMenu()
+    public void DeactivateMenu()
     {
-        if (mainMenu != null)
-            mainMenu.SetActive(false);
+        menu.SetActive(false);
     }
-    public void ActivateNewGameMenu() //menu new game
-    {
-        saveMenu.SetActive(true);
-        saveText.text = "New Game";
-        newGameButton.SetActive(true);
-    }
-    public void ActivateSaveMenu() //load menu
-    {
-        CheckSaveExist();
-        saveMenu.SetActive(true);
-        saveText.text = "Load";
-        loadButton.SetActive(true);
-    }
-    public void DeactivateNewGameSaveMenu()
-    {
-        saveMenu.SetActive(false);
-        saveText.text = "";
-        if (newGameButton != null)
-            newGameButton.SetActive(false);
-        if (loadButton != null)
-            loadButton.SetActive(false);
-    }
-    public void ActivateLevelMenu() //slect level menu
-    {
-        levelMenu.SetActive(true);
-        ExitCampain();
-        CheckCampainProgress();
-    }
-    public void DeactivateLevelMenu()
-    {
-        levelMenu.SetActive(false);
-    }
+    
     public void ActivatePauseMenu() //pause menu
     {
         pauseMenu.SetActive(true);
@@ -105,7 +52,7 @@ public class UIManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
     }
-    public void ActivateOptionMenu() //pause menu
+    public void ActivateOptionMenu() //option menu
     {
         optionMenu.SetActive(true);
     }
@@ -113,43 +60,15 @@ public class UIManager : MonoBehaviour
     {
         optionMenu.SetActive(false);
     }
-    public void ActivateEndLevel()
+    public void ActivateMenuGameOver() //gameOver menu
     {
-        DeactivatePauseMenu();
-        DeactivateOptionMenu();
-        endLevel.SetActive(true);
+        menuGameOver.SetActive(true);
     }
-    public void DeactivateEndLevel()
+    public void DeactivateMenuGameOver()
     {
-        endLevel.SetActive(false);
+        menuGameOver.SetActive(false);
     }
 
-    //icon fct goes here
-
-    public void DactivateIcons()
-    {
-        icon.SetActive(false);
-    }
-
-    public void ActivateLives() //activate livesDisplay
-    {
-        LivesDisplay.SetActive(true);
-        UpdateLives();
-    }
-    public void DeactivateLives()
-    {
-        LivesDisplay.SetActive(false);
-    }
-    public void UpdateLives()
-    {
-        for (int i = 0; i < GameManager.Instance.maxLives; i++)
-        {
-            if (GameManager.Instance.lives > i)
-                lives[i].sprite = live;
-            else
-                lives[i].sprite = emptylive;
-        }
-    }
     public void ActivateScore() //activate score
     {
         score.SetActive(true);
@@ -161,7 +80,7 @@ public class UIManager : MonoBehaviour
     }
     public void UpadateScore(int point)
     {
-        //scoreText.text = "Score : " + GameManager.Instance.score;
+        scoreText.text = "Score : " + GameManager.Instance.score;
         /*if (point > 0)
         {
             textAnimator.SetTrigger("add");
@@ -169,101 +88,45 @@ public class UIManager : MonoBehaviour
         }*/
     }
 
-    public void CheckSaveExist() //make button for load interractible if the file already exists
-    {
-        for (int i = 0; i < loadButtons.Count; i++)
-        {
-            loadButtons[i].interactable = false;
-            string path = Application.persistentDataPath + "/data" + (i + 1) + ".save";
-            if (File.Exists(path))
-                loadButtons[i].interactable = true;
-        }
-    }
-    public void CheckCampainProgress()
-    {
-        for (int i = 0; i < LevelButtons.Count; i++) //adapt 
-        {/*
-            if (i < GameManager.Instance.levelUnlock)
-                LevelButtons[i].interactable = true;
-            highScores[i].text = GameManager.Instance.highScoreList[i].ToString() + " Points";
-            //if statement to activate star
-            if (GameManager.Instance.highScoreList[i] > starRequirement[i].z)
-                starLvl[i].sprite = starImage[3];
-            else if (GameManager.Instance.highScoreList[i] > starRequirement[i].y)
-                starLvl[i].sprite = starImage[2];
-            else if (GameManager.Instance.highScoreList[i] > starRequirement[i].x)
-                starLvl[i].sprite = starImage[1];
-            else
-                starLvl[i].sprite = starImage[0];*/
-        }
-    }
-    void ExitCampain()
-    {
-        for (int i = 0; i < LevelButtons.Count; i++)
-        {
-            LevelButtons[i].interactable = false;
-            highScores[i].text = GameManager.Instance.highScoreList[i].ToString();
-        }
-    }
+    
 
-    public void ButtonNewGameMenu()//main menu -> new game menu
+    public void ButtonStart() //start the game
     {
-        DeactivateMainMenu();
-        ActivateNewGameMenu();
+        DeactivateMenu();
         SoundManager.Instance.Play("Button");
+        GameManager.Instance.ChangeGameState(GameManager.GameStates.InMenu);
+        //active gameObject
+        //deactive menuObject
     }
-    public void ButtonSaveMenu()//main menu/end level -> load menu
-    {
-        DeactivateMainMenu();
-        DeactivateEndLevel();
-        ActivateSaveMenu();
-        SoundManager.Instance.Play("Button");
-    }
-    public void ButtonStartNewGame(int file)//new game menu -> level select + create save to file X
-    {
-        DeactivateNewGameSaveMenu();
-        //GameManager.Instance.SetUpStartValue(file);
-        //GameManager.Instance.Save(file);
-        ActivateLevelMenu();
-        SoundManager.Instance.Play("Button");
-    }
-    public void ButtonLevelMenu(int file)//load menu -> level select menu of file X OR tuto if tuto not completed
-    {
-        //GameManager.Instance.Load(file);
-        DeactivateNewGameSaveMenu();
-        ActivateLevelMenu();
-        SoundManager.Instance.Play("Button");
-    }
-    public void ButtonSelectLevel(string level)//level select menu -> level X
-    {
-        DeactivateLevelMenu();
-        SceneManager.LoadScene(level);
-        SoundManager.Instance.Play("Button");
-        //GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
-    }
-    public void ButtonResume()//pause menu -> level
+    //button option
+    public void ButtonResume() //exit pause and resume game
     {
         DeactivatePauseMenu();
         SoundManager.Instance.Play("Button");
-        //GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
+        GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
+        //resume movement and spawn
     }
-    //button next lvl
-    public void ButtonRetry()
+    public void ButtonRetry() //restart game from game over
     {
-        DeactivateEndLevel();
+        DeactivateMenuGameOver();
         SoundManager.Instance.Play("Button");
-        //GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
     }
-    public void ButtonNextLevel()//level -> level + 1
+    public void ButtonStartMenu() //go back to start menu from game over
     {
-        DeactivateEndLevel();
+        DeactivateMenuGameOver();
+        ActivateMenu();
         SoundManager.Instance.Play("Button");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
     }
-    public void ButtonQuit()//exit app
+    public void ButtonCredit() //launch credit
     {
+        SoundManager.Instance.Play("Button");
+        GameManager.Instance.ChangeGameState(GameManager.GameStates.Credits);
+        credits.SetActive(true);
+    }
+    public void ButtonQuit() //exit app
+    {
+        SoundManager.Instance.Play("Button");
         Application.Quit();
     }
 

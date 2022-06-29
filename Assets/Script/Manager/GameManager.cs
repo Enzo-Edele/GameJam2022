@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-//using Cinemachine;
-using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -48,15 +45,19 @@ public class GameManager : MonoBehaviour
         switch (gameState)
         {
             case GameStates.InMenu:
+                UIManager.Instance.DeactivateScore();
                 //Debug.Log("InMenu");
                 break;
             case GameStates.InGame:
+                UIManager.Instance.ActivateScore();
                 //Debug.Log("InGame");
                 break;
             case GameStates.Pause:
+                UIManager.Instance.ActivateScore();
                 //Debug.Log("Pause");
                 break;
             case GameStates.Credits:
+                UIManager.Instance.DeactivateScore();
                 //Debug.Log("Credits");
                 break;
         }
@@ -64,50 +65,23 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
-    }
-
-    public void SetUpStartValue(int file)
-    {
-        this.file = file;
-        for (int i = 0; i < 7; i++)
+        if (Input.GetKeyDown(KeyCode.Escape) && gameState == GameStates.InGame)
         {
-            highScoreList.Add(0);
-        }
-    }
-    public void Save(int file)
-    {
-        SaveSysteme.Save(this, file);
-        //Debug.Log("save to file : " + file);
-    }
-    public void Load(int file)
-    {
-        SetUpStartValue(file);
-        string path = Application.persistentDataPath + "/data" + file + ".save";
-        if (File.Exists(path))
-        {
-            SaveData data = SaveSysteme.LoadData(file);
-            this.file = data.file;
-            for (int i = 0; i < 7; i++)
-            {
-                highScoreList[i] = (data.highScoreList[i]);
-            }
-            //Debug.Log("load file : "+ file);
+            UIManager.Instance.ActivatePauseMenu();
+            ChangeGameState(GameStates.Pause);
         }
     }
 
-    public void ChangeLife(int damage)
-    {
-        lives += damage;
-        if (lives <= 0)
-        {
-            //faire mourrir
-        }
-        UIManager.Instance.UpdateLives();
-    }
     public void UpdateScore(int point, int index)
     {
         score += point;
         UIManager.Instance.UpadateScore(point);
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("Loose");
+        UIManager.Instance.ActivateMenuGameOver();
+        //active menuObject
     }
 }

@@ -59,6 +59,6 @@ public class Tower : MonoBehaviour
             spine[i].GetComponent<Brick>().BringDown();
         }
         if (spine.Count <= 0)
-            Debug.Log("Loose");
+            GameManager.Instance.GameOver();
     }
 }
