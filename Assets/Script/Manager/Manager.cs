@@ -9,6 +9,6 @@ public class Manager : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        UIManager.Instance.ActivateMainMenu();
+        UIManager.Instance.ActivateMenu();
     }
 }
