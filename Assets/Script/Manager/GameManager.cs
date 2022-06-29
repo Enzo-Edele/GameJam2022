@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateScore(int point)
+    public void UpdateScore(int point, Vector2 scorePos)
     {
         score += point;
         UIManager.Instance.UpadateScore(point);
