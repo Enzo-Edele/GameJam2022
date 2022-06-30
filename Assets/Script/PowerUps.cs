@@ -6,6 +6,8 @@ public class PowerUps : MonoBehaviour
 {
     public Color color;
     public bool isSelect = false;
+    Rigidbody2D rb;
+    Vector2 customUp;
 
     public enum Power
     {
@@ -18,6 +20,9 @@ public class PowerUps : MonoBehaviour
 
     private void Start()
     {
+        customUp = new Vector2(Vector2.up.x + Random.Range(-2f, 2f), Vector2.up.y);
+        rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(customUp.normalized * 4, ForceMode2D.Impulse);
         int rnd = Random.Range(0, 4);
         power = (Power)rnd;
 
