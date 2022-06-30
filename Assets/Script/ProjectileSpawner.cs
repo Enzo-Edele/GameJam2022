@@ -85,7 +85,8 @@ public class ProjectileSpawner : MonoBehaviour
             slowMotionTimer = slowMotionTime;
         for (int i = 0; i < projectiles.Count; i++)
         {
-            projectiles[i].GetComponent<Projectile>().speed = projectileSpeed;
+            projectiles[i].GetComponent<Projectile>().ChangeVelocity();
+            Debug.Log(active);
         }
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PowerUps : MonoBehaviour
 {
+    public Color color;
+
     public enum Power
     {
         Barrier,
@@ -20,20 +22,21 @@ public class PowerUps : MonoBehaviour
 
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         if (rnd == 0)
-            renderer.color = Color.cyan;
+            color = renderer.color = Color.cyan;
         if (rnd == 1)
-            renderer.color = Color.gray;
+            color = renderer.color = Color.gray;
         if (rnd == 2)
-            renderer.color = Color.red;
+            color = renderer.color = Color.red;
         if (rnd == 3)
-            renderer.color = Color.green;
+            color = renderer.color = Color.green;
     }
 
     private void OnMouseDown()
     {
-        Use();
+        //Use();
+        UIManager.Instance.GetPowerUp(this, color);
     }
-    void Use()
+    public void Use()
     {
         switch (power)
         {
@@ -50,6 +53,5 @@ public class PowerUps : MonoBehaviour
                 GameManager.Instance.tower.LifeUp();
                 break;
         }
-        Destroy(gameObject);
     }
 }

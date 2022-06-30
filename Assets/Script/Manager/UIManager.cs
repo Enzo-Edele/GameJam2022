@@ -16,7 +16,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject optionMenu;
 
-    
+    [SerializeField] GameObject powerUpBoxes;
+    [SerializeField] Image powerUpImage;
+    [SerializeField] GameObject spaceBarIcon;
+    public PowerUps powerUps;
+
     [SerializeField] GameObject score;
     [SerializeField] TMP_Text scoreText;
     [SerializeField] Animator textAnimator;
@@ -83,19 +87,37 @@ public class UIManager : MonoBehaviour
         scoreText.text = "Score : " + GameManager.Instance.score;
         if (point > 0)
         {
-            textAnimator.SetTrigger("Add");
+            //textAnimator.SetTrigger("Add");
             scoreAddText.text = "+" + point;
         }
     }
 
-    
+    public void GetPowerUp(PowerUps power, Color color)
+    {
+        if (powerUps != null)
+            Destroy(powerUps.gameObject);
+        powerUps = power;
+        powerUps.gameObject.transform.position = new Vector2(15, -10);
+        spaceBarIcon.SetActive(true);
+        powerUpImage.color = color;
+    }
+    public void UsePowerUp()
+    {
+        if (powerUps != null)
+        {
+            powerUps.Use();
+            Destroy(powerUps.gameObject);
+            powerUps = null;
+            spaceBarIcon.SetActive(false);
+            powerUpImage.color = Color.black;
+        }
+    }
 
     public void ButtonStart() //start the game
     {
         DeactivateMenu();
         SoundManager.Instance.Play("Button");
         GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
-        //active gameObject
         //deactive menuObject
     }
     //button option
