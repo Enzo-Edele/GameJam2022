@@ -88,6 +88,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Loose");
         UIManager.Instance.ActivateMenuGameOver();
-        //active menuObject
+        ChangeGameState(GameStates.InMenu);
     }
 }

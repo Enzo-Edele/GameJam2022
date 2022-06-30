@@ -13,11 +13,12 @@ public class ProjectileSpawner : MonoBehaviour
 
 
     [SerializeField] int timeSpawnMin, timeSpawnMax;
+    [SerializeField] float baseY, sinMult, dénominateur;
     float timerSpawn;
 
     void Start()
     {
-        timerSpawn = Random.Range(timeSpawnMin, timeSpawnMax);
+        timerSpawn = Random.Range(timeSpawnMin, baseY + sinMult * Mathf.Sin(Time.realtimeSinceStartup/12.75f));
     }
 
     void Update()
@@ -26,7 +27,7 @@ public class ProjectileSpawner : MonoBehaviour
             timerSpawn -= Time.deltaTime;
         else if(timerSpawn <= 0)
         {
-            timerSpawn = Random.Range(timeSpawnMin, timeSpawnMax);
+            timerSpawn = Random.Range(timeSpawnMin, baseY + sinMult * Mathf.Sin(Time.realtimeSinceStartup / 12.75f));
             Spawn();
         }
 
@@ -76,17 +77,15 @@ public class ProjectileSpawner : MonoBehaviour
     {
         if (active && slowMotionTimer == 0)
         {
-            projectileSpeed -= speedVariation;
+            Time.timeScale = 0.5f;
             slowMotionTimer = slowMotionTime;
         }
-        else if(!active && slowMotionTimer == 0)
-            projectileSpeed += speedVariation;
-        else
-            slowMotionTimer = slowMotionTime;
-        for (int i = 0; i < projectiles.Count; i++)
+        else if (!active)
         {
-            projectiles[i].GetComponent<Projectile>().ChangeVelocity();
-            Debug.Log(active);
+            Time.timeScale = 1f;
+            Debug.Log("normal");
         }
+        else if (active)
+            slowMotionTimer = slowMotionTime;
     }
 }

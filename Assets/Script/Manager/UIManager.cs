@@ -97,7 +97,8 @@ public class UIManager : MonoBehaviour
         if (powerUps != null)
             Destroy(powerUps.gameObject);
         powerUps = power;
-        powerUps.gameObject.transform.position = new Vector2(15, -10);
+        powerUps.gameObject.transform.position = new Vector2(10, -7);
+        powerUps.isSelect = true;
         spaceBarIcon.SetActive(true);
         powerUpImage.color = color;
     }
@@ -116,39 +117,43 @@ public class UIManager : MonoBehaviour
     public void ButtonStart() //start the game
     {
         DeactivateMenu();
-        SoundManager.Instance.Play("Button");
+        //SoundManager.Instance.Play("Button");
         GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
+        GameManager.Instance.tower.BuildTower();
+        GameManager.Instance.UpdateScore(-GameManager.Instance.score);
         //deactive menuObject
     }
     //button option
     public void ButtonResume() //exit pause and resume game
     {
         DeactivatePauseMenu();
-        SoundManager.Instance.Play("Button");
+        //SoundManager.Instance.Play("Button");
         GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
         //resume movement and spawn
     }
     public void ButtonRetry() //restart game from game over
     {
         DeactivateMenuGameOver();
-        SoundManager.Instance.Play("Button");
+        GameManager.Instance.tower.BuildTower();
+        GameManager.Instance.UpdateScore(-GameManager.Instance.score);
+        //SoundManager.Instance.Play("Button");
         GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
     }
     public void ButtonStartMenu() //go back to start menu from game over
     {
         DeactivateMenuGameOver();
         ActivateMenu();
-        SoundManager.Instance.Play("Button");
+        //SoundManager.Instance.Play("Button");
     }
     public void ButtonCredit() //launch credit
     {
-        SoundManager.Instance.Play("Button");
+        //SoundManager.Instance.Play("Button");
         GameManager.Instance.ChangeGameState(GameManager.GameStates.Credits);
         credits.SetActive(true);
     }
     public void ButtonQuit() //exit app
     {
-        SoundManager.Instance.Play("Button");
+        //SoundManager.Instance.Play("Button");
         Application.Quit();
     }
 

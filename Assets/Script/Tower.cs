@@ -11,7 +11,7 @@ public class Tower : MonoBehaviour
     public List<Brick> spine = new List<Brick>();
     private void Start()
     {
-        BuildTower();
+        //BuildTower();
     }
     private void Update()
     {
@@ -20,7 +20,7 @@ public class Tower : MonoBehaviour
                 spine.RemoveAt(i);
     }
 
-    void BuildTower()
+    public void BuildTower()
     {
         Vector2 position = transform.position;
 
@@ -60,8 +60,11 @@ public class Tower : MonoBehaviour
         {
             spine[i].GetComponent<Brick>().BringDown();
         }
-        if (spine.Count <= 0)
+        if (spine.Count <= 1)
+        {
+            //Debug.Log(spine.Count);
             GameManager.Instance.GameOver();
+        }
     }
     public void LifeUp()
     {

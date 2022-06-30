@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerUps : MonoBehaviour
 {
     public Color color;
+    public bool isSelect = false;
 
     public enum Power
     {
@@ -29,6 +30,13 @@ public class PowerUps : MonoBehaviour
             color = renderer.color = Color.red;
         if (rnd == 3)
             color = renderer.color = Color.green;
+    }
+    private void Update()
+    {
+        if (transform.position.magnitude > 20.0f && !isSelect)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnMouseDown()
