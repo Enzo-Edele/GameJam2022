@@ -7,23 +7,26 @@ using TMPro;
 public class Projectile : MonoBehaviour
 {
 
-    float randNum;
-    private int reboundCount;
-    public GameObject popUpScore;
-    //[SerializeField] GameObject             projectile;
-    Rigidbody2D rb;
-    public int scoreIntTxt = 100;
-    public float multiplyer;
-    //Vector2 originalSpeed = new Vector2(,);
-    Vector2 Direction;
-    public float speed;
+    float                                   randNum;
+    private int                             reboundCount;
+    public GameObject                       popUpScore;
+    Rigidbody2D                             rb;
+    public int                              scoreIntTxt = 100;
+    public float                            speed;
+    public float                            multiplyer;
+    Vector2                                 Direction;
+    Transform spriteRot;
 
     void Start()
     {
-        randNum = Random.Range(-5f, 5f);
+        spriteRot = this.GetComponent<SpriteRenderer>().transform;
+
+        //physique au start
         rb = this.GetComponent<Rigidbody2D>();
+        randNum = Random.Range(-5f, 5f);
         Direction = new Vector2((0) - rb.position.x , (0 + randNum) - rb.position.y);
         rb.AddForce(Direction.normalized * 8, ForceMode2D.Impulse);
+
         GetComponentInParent<ProjectileSpawner>().projectiles.Add(gameObject);
         speed = GameManager.Instance.spawner.projectileSpeed;
     }
@@ -31,7 +34,8 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //spinning Sprite
+        spriteRot.transform.Rotate(0, 0, -450 * Time.deltaTime);
         if (reboundCount >= 3)
         {
             Destroy(this.gameObject);
