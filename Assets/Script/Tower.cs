@@ -74,7 +74,6 @@ public class Tower : MonoBehaviour
                 if (!apply)
                 {
                     apply = spine[i].checkFlooreLives(check);
-                    Debug.Log("floor : " + i + "apply : " + apply);
                 }
             }
             check++;

@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
         rb.AddForce(Direction.normalized * 8, ForceMode2D.Impulse);
         GetComponentInParent<ProjectileSpawner>().projectiles.Add(gameObject);
         speed = GameManager.Instance.spawner.projectileSpeed;
+        //Debug.Log(GetComponent<Rigidbody2D>().velocity);
     }
 
     // Update is called once per frame
@@ -43,6 +44,7 @@ public class Projectile : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        GameManager.Instance.UpdateScore(100);
         //Trigger PopUP
         if (popUpScore)
         {
@@ -65,5 +67,11 @@ public class Projectile : MonoBehaviour
         {
             reboundCount++;
         }
+    }
+
+    public void ChangeVelocity()
+    {
+        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody.velocity *= GameManager.Instance.spawner.speedVariation;
     }
 }

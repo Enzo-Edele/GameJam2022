@@ -72,9 +72,13 @@ public class GameManager : MonoBehaviour
             UIManager.Instance.ActivatePauseMenu();
             ChangeGameState(GameStates.Pause);
         }
+        if (Input.GetKeyDown(KeyCode.Space) && gameState == GameStates.InGame)
+        {
+            UIManager.Instance.UsePowerUp();
+        }
     }
 
-    public void UpdateScore(int point, Vector2 scorePos)
+    public void UpdateScore(int point)
     {
         score += point;
         UIManager.Instance.UpadateScore(point);
