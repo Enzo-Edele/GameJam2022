@@ -7,6 +7,10 @@ public class ProjectileSpawner : MonoBehaviour
     [SerializeField] GameObject projectile;
     public List<GameObject> projectiles = new List<GameObject>();
     public float projectileSpeed;
+    public float speedVariation;
+    public float slowMotionTime;
+    [SerializeField]float slowMotionTimer;
+
 
     [SerializeField] int timeSpawnMin, timeSpawnMax;
     float timerSpawn;
@@ -25,6 +29,18 @@ public class ProjectileSpawner : MonoBehaviour
             timerSpawn = Random.Range(timeSpawnMin, timeSpawnMax);
             Spawn();
         }
+
+        if (slowMotionTimer > 0 && GameManager.GameStates.InGame == GameManager.GameState)
+            slowMotionTimer -= Time.deltaTime;
+        else if (slowMotionTimer < 0)
+        {
+            slowMotionTimer = 0;
+            SlowMotion(false);
+        }
+
+        for (int i = 0; i < projectiles.Count; i++)
+            if (projectiles[i] == null)
+                projectiles.RemoveAt(i);
     }
     void Spawn()
     {
@@ -54,6 +70,22 @@ public class ProjectileSpawner : MonoBehaviour
         {
             Destroy(projectiles[i]);
             projectiles.RemoveAt(i);
+        }
+    }
+    public void SlowMotion(bool active)
+    {
+        if (active && slowMotionTimer == 0)
+        {
+            projectileSpeed -= speedVariation;
+            slowMotionTimer = slowMotionTime;
+        }
+        else if(!active && slowMotionTimer == 0)
+            projectileSpeed += speedVariation;
+        else
+            slowMotionTimer = slowMotionTime;
+        for (int i = 0; i < projectiles.Count; i++)
+        {
+            projectiles[i].GetComponent<Projectile>().speed = projectileSpeed;
         }
     }
 }
