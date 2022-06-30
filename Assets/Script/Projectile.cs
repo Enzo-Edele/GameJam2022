@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
     public float multiplyer;
     //Vector2 originalSpeed = new Vector2(,);
     Vector2 Direction;
-    float speed;
+    public float speed;
 
     void Start()
     {
@@ -49,6 +49,9 @@ public class Projectile : MonoBehaviour
             ShowScore();
         }
         GameObject.Destroy(this.gameObject);
+        int rnd = Random.Range(0, GameManager.Instance.dropRate);
+        if(rnd == 0)
+            Instantiate(GameManager.Instance.powerUpPrefab, transform.position, Quaternion.identity);
     }
     private void ShowScore()
     {

@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public Tower tower;
     public ProjectileSpawner spawner;
     public GameObject barrier;
+    public GameObject powerUpPrefab;
+    public int dropRate = 2;
 
     public SpriteRenderer brick;
     public float brickWidth;
