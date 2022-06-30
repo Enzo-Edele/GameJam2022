@@ -6,8 +6,9 @@ using TMPro;
 
 public class Projectile : MonoBehaviour
 {
+    private int                             reboundCount;
     public GameObject                       popUpScore;
-    [SerializeField] GameObject             projectile;
+    //[SerializeField] GameObject             projectile;
     Rigidbody2D                             rb;
     public int                              scoreIntTxt = 100;
     public float                            multiplyer;
@@ -15,14 +16,17 @@ public class Projectile : MonoBehaviour
     void Start()
     {
 
-       rb = projectile.GetComponent<Rigidbody2D>();
+       rb = this.GetComponent<Rigidbody2D>();
        rb.AddForce(originalSpeed * 80);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(reboundCount >= 3)
+        {
+            Destroy(this.gameObject);
+        }
     }
     private void OnMouseDown()
     {
@@ -31,11 +35,19 @@ public class Projectile : MonoBehaviour
         {
             ShowScore();
         }
-        //GameObject.Destroy(projectile);
+        GameObject.Destroy(this.gameObject);
     }
     private void ShowScore()
     {
         var go = Instantiate(popUpScore, rb.position, Quaternion.identity);
         go.GetComponent<TextMeshPro>().text = scoreIntTxt.ToString();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+            reboundCount++;
+        }
     }
 }
