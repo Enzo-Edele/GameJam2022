@@ -6,19 +6,21 @@ using TMPro;
 
 public class Projectile : MonoBehaviour
 {
-
-    float                                   randNum;
+    private float                           randNum;
     private int                             reboundCount;
     public GameObject                       popUpScore;
-    Rigidbody2D                             rb;
+    public GameObject                       boomAnim;
+    private Rigidbody2D                     rb;
     public int                              scoreIntTxt = 100;
     public float                            speed;
     public float                            multiplyer;
     Vector2                                 Direction;
+    Vector2                                 offSet;
     Transform spriteRot;
 
     void Start()
     {
+        offSet = new Vector2(0, 1);
         spriteRot = this.GetComponent<SpriteRenderer>().transform;
 
         //physique au start
@@ -52,22 +54,35 @@ public class Projectile : MonoBehaviour
     private void OnMouseDown()
     {
         GameManager.Instance.UpdateScore(100);
+        //Trigger Boom
+        if (boomAnim)
+        {
+            Boom();
+        }
         //Trigger PopUP
         if (popUpScore)
         {
             ShowScore();
         }
+
         GameObject.Destroy(this.gameObject);
+
+        //PowerUp
         int rnd = Random.Range(0, GameManager.Instance.dropRate);
         if(rnd == 0)
             Instantiate(GameManager.Instance.powerUpPrefab, transform.position, Quaternion.identity);
     }
     private void ShowScore()
     {
-        var go = Instantiate(popUpScore, rb.position, Quaternion.identity);
+        var go = Instantiate(popUpScore, rb.position + offSet, Quaternion.identity);
         go.GetComponent<TextMeshPro>().text = scoreIntTxt.ToString();
     }
 
+    private void Boom()
+    {
+        var go = Instantiate(boomAnim, rb.position, Quaternion.identity);
+        Destroy(go, 0.6f);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 6)

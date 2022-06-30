@@ -9,7 +9,7 @@ public class PopUpScore : MonoBehaviour
     private float timer;
     private float timerMax = 0.6f;
     private Vector2 moveDir;
-    Vector2 offSet = new Vector2(0, 1);
+
 
     private Color textColor;
 
@@ -29,12 +29,12 @@ public class PopUpScore : MonoBehaviour
 
         if (timer > timerMax * .5f)
         {
-            float increaseScaleAmount = 1.1f;
+            float increaseScaleAmount = 0.2f;
             transform.localScale += Vector3.one * increaseScaleAmount * Time.deltaTime;
         }
         else
         {
-            float decreaseScaleAmount = 1.5f;
+            float decreaseScaleAmount = 1f;
             transform.localScale -= Vector3.one * decreaseScaleAmount * Time.deltaTime;
         }
         timer -= Time.deltaTime;

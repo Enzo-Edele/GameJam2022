@@ -318,6 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUpScore: {fileID: 1334820652923826141, guid: de70588893fda1a4fbb50fe56f306784, type: 3}
+  boomAnim: {fileID: 7486137118095818801, guid: d3413f199f6854c449f010e7e309ffad, type: 3}
   scoreIntTxt: 100
   speed: 0
   multiplyer: 0
