@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4387484252199250969, guid: d36c364edf2fa5f4999a6da2392ade08, type: 2}
+  - {fileID: -8447605033522175700, guid: ab33eb67197308048b3277d5e7e4186e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,8 +102,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 100
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d36c364edf2fa5f4999a6da2392ade08, type: 2}
-  m_sharedMaterial: {fileID: -4387484252199250969, guid: d36c364edf2fa5f4999a6da2392ade08, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ab33eb67197308048b3277d5e7e4186e, type: 2}
+  m_sharedMaterial: {fileID: -8447605033522175700, guid: ab33eb67197308048b3277d5e7e4186e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -114,10 +114,10 @@ MonoBehaviour:
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 1, g: 0.29803923, b: 0.29803923, a: 1}
-    topRight: {r: 1, g: 0.29622638, b: 0.29622638, a: 1}
+    topLeft: {r: 1, g: 0, b: 0, a: 1}
+    topRight: {r: 1, g: 0, b: 0, a: 1}
     bottomLeft: {r: 1, g: 0.97531605, b: 0, a: 1}
-    bottomRight: {r: 1, g: 0.97647065, b: 0, a: 1}
+    bottomRight: {r: 1, g: 0, b: 0, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -184,7 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31d450836c5fb34a8af103eeec1708b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0.3
 --- !u!95 &1932421187
 Animator:
   serializedVersion: 3
@@ -195,7 +194,7 @@ Animator:
   m_GameObject: {fileID: 1334820652923826141}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 002da9bd95cf92344a08eb62802e41a1, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
