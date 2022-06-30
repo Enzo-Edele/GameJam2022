@@ -16,13 +16,16 @@ public class Projectile : MonoBehaviour
     public float multiplyer;
     //Vector2 originalSpeed = new Vector2(,);
     Vector2 Direction;
+    float speed;
+
     void Start()
     {
         randNum = Random.Range(-5f, 5f);
         rb = this.GetComponent<Rigidbody2D>();
         Direction = new Vector2((0) - rb.position.x , (0 + randNum) - rb.position.y);
         rb.AddForce(Direction.normalized * 8, ForceMode2D.Impulse);
-
+        GetComponentInParent<ProjectileSpawner>().projectiles.Add(gameObject);
+        speed = GameManager.Instance.spawner.projectileSpeed;
     }
 
     // Update is called once per frame

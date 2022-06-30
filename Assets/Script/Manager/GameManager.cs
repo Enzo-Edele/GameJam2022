@@ -5,13 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     #region Declaration
-    public int file;
-
     public List<int> highScoreList = new List<int>();
 
-    public int maxLives;
-    public int lives;
     public int score;
+
+    public Tower tower;
+    public ProjectileSpawner spawner;
+    public GameObject barrier;
 
     public SpriteRenderer brick;
     public float brickWidth;

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
-    [SerializeField] int life;
-    public List<GameObject> neighbor;
+    public int life;
+    public List<Brick> neighbor;
 
     /*[HideInInspector]*/public bool isSpine;
     public int spineIndex;
@@ -18,16 +18,20 @@ public class Brick : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Hit();
+        LifeChange(-1);
     }
-    void Hit()
+    void LifeChange(int change)
     {
-        life--;
+        life += change;
         if (life <= 0)
             Destruct();
+        else if (life == 1)
+            GetComponent<SpriteRenderer>().color = Color.green;
+        else if (life == 2)
+            GetComponent<SpriteRenderer>().color = Color.blue;
     }
 
-    public void SetNeighbor(int index, List<GameObject> homies)
+    public void SetNeighbor(int index, List<Brick> homies)
     {
         for(int i = 0; i < homies.Count; i++)
             if (i != index)
@@ -62,5 +66,32 @@ public class Brick : MonoBehaviour
             neighbor[i].transform.position = pos;
         }
         spineIndex--;
+    }
+    public bool checkFlooreLives(int check)
+    {
+        bool changed = false;
+        if (life <= check)
+        {
+            check = life;
+            changed = true;
+        }
+        for(int i = 0; i < neighbor.Count; i++)
+        {
+            if (neighbor[i].life <= check && !changed)
+            {
+                check = neighbor[i].life;
+                changed = true;
+            }
+        }
+        if (changed)
+        {
+            LifeChange(1);
+            for (int i = 0; i < neighbor.Count; i++)
+            {
+                neighbor[i].LifeChange(1);
+            }
+        }
+
+        return changed;
     }
 }

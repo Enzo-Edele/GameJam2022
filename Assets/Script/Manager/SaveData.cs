@@ -12,7 +12,7 @@ public class SaveData
 
     public SaveData(GameManager gameData)
     {
-        file = gameData.file;
+        //file = gameData.file;
         score = gameData.score;
         for (int i = 0; i < gameData.highScoreList.Count; i++)
         {

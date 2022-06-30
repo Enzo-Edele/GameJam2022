@@ -8,7 +8,7 @@ public class Tower : MonoBehaviour
     public int height = 3;
     public int width = 3;
 
-    public List<GameObject> spine = new List<GameObject>();
+    public List<Brick> spine = new List<Brick>();
     private void Start()
     {
         BuildTower();
@@ -24,24 +24,26 @@ public class Tower : MonoBehaviour
     {
         Vector2 position = transform.position;
 
-        List<GameObject> floor = new List<GameObject>();
+        List<Brick> floor = new List<Brick>();
         for(int i = 0; i < height; i++)
         {
-            GameObject spineBrick = Instantiate(brick, new Vector2(position.x, position.y + i * GameManager.Instance.brickHeight), Quaternion.identity, transform);//mettre brick height
-            floor.Add(spineBrick);
-            spine.Add(spineBrick);
+            GameObject spineBrick = Instantiate(brick, new Vector2(position.x, position.y + i * GameManager.Instance.brickHeight), Quaternion.identity, transform);
+            floor.Add(spineBrick.GetComponent<Brick>());
+            spine.Add(spineBrick.GetComponent<Brick>());
             spine[spine.Count - 1].GetComponent<Brick>().spineIndex = spine.Count;
 
             for (int j = 0; j < (int)width/2; j++)
             {
-                floor.Add(Instantiate(brick, new Vector2(position.x + (j + 1) * GameManager.Instance.brickWidth, position.y + i * GameManager.Instance.brickHeight), Quaternion.identity, transform));//mettre brick width
-                floor.Add(Instantiate(brick, new Vector2(position.x - (j + 1) * GameManager.Instance.brickWidth, position.y + i * GameManager.Instance.brickHeight), Quaternion.identity, transform));
+                spineBrick = Instantiate(brick, new Vector2(position.x + (j + 1) * GameManager.Instance.brickWidth, position.y + i * GameManager.Instance.brickHeight), Quaternion.identity, transform);
+                floor.Add(spineBrick.GetComponent<Brick>());
+                spineBrick = Instantiate(brick, new Vector2(position.x - (j + 1) * GameManager.Instance.brickWidth, position.y + i * GameManager.Instance.brickHeight), Quaternion.identity, transform);
+                floor.Add(spineBrick.GetComponent<Brick>());
             }
             SetFloor(floor);
             floor.Clear();
         }
     }
-    void SetFloor(List<GameObject> floorBricks)
+    void SetFloor(List<Brick> floorBricks)
     {
         Brick brick;
         for(int i = 0; i < floorBricks.Count; i++)
@@ -60,5 +62,22 @@ public class Tower : MonoBehaviour
         }
         if (spine.Count <= 0)
             GameManager.Instance.GameOver();
+    }
+    public void LifeUp()
+    {
+        int check = 1;
+        bool apply = false;
+        while (!apply && check < 10)
+        {
+            for (int i = 0; i < spine.Count; i++)
+            {
+                if (!apply)
+                {
+                    apply = spine[i].checkFlooreLives(check);
+                    Debug.Log("floor : " + i + "apply : " + apply);
+                }
+            }
+            check++;
+        }
     }
 }

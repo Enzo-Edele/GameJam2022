@@ -5,6 +5,8 @@ using UnityEngine;
 public class ProjectileSpawner : MonoBehaviour
 {
     [SerializeField] GameObject projectile;
+    public List<GameObject> projectiles = new List<GameObject>();
+    public float projectileSpeed;
 
     [SerializeField] int timeSpawnMin, timeSpawnMax;
     float timerSpawn;
@@ -44,6 +46,14 @@ public class ProjectileSpawner : MonoBehaviour
             spawn.x = 9.5f;
             spawn.y = Random.Range(-5f, 5f);
         }
-        Instantiate(projectile, spawn, Quaternion.identity);
+        Instantiate(projectile, spawn, Quaternion.identity, transform);
+    }
+    public void DestroyAll()
+    {
+        for(int i = 0; i < projectiles.Count; i++)
+        {
+            Destroy(projectiles[i]);
+            projectiles.RemoveAt(i);
+        }
     }
 }
