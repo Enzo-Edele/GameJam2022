@@ -6,27 +6,37 @@ using TMPro;
 
 public class Projectile : MonoBehaviour
 {
-    private int                             reboundCount;
-    public GameObject                       popUpScore;
+
+    float randNum;
+    private int reboundCount;
+    public GameObject popUpScore;
     //[SerializeField] GameObject             projectile;
-    Rigidbody2D                             rb;
-    public int                              scoreIntTxt = 100;
-    public float                            multiplyer;
-    Vector2 originalSpeed = new Vector2(2, -2);
+    Rigidbody2D rb;
+    public int scoreIntTxt = 100;
+    public float multiplyer;
+    //Vector2 originalSpeed = new Vector2(,);
+    Vector2 Direction;
     void Start()
     {
+        randNum = Random.Range(-5f, 5f);
+        rb = this.GetComponent<Rigidbody2D>();
+        Direction = new Vector2((0) - rb.position.x , (0 + randNum) - rb.position.y);
+        rb.AddForce(Direction.normalized * 8, ForceMode2D.Impulse);
 
-       rb = this.GetComponent<Rigidbody2D>();
-       rb.AddForce(originalSpeed * 80);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(reboundCount >= 3)
+        
+        if (reboundCount >= 3)
         {
             Destroy(this.gameObject);
         }
+        /*else if (rb.position.x > 0 || rb.position.x > 1 || rb.position.y > 1 || rb.position.y < 0)
+        {
+            Destroy(this.gameObject);
+        }*/
     }
     private void OnMouseDown()
     {
@@ -45,7 +55,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == 6)
+        if (collision.gameObject.layer == 6)
         {
             reboundCount++;
         }
