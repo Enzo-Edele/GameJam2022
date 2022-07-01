@@ -47,6 +47,7 @@ public class PowerUps : MonoBehaviour
     private void OnMouseDown()
     {
         //Use();
+        SoundManager.Instance.Play("PowerUPClicked");
         UIManager.Instance.GetPowerUp(this, color);
     }
     public void Use()
