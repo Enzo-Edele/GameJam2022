@@ -564,10 +564,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5448439760579748246, guid: ce85097aea0079a41aaf1aa8a6f7f011, type: 3}
-      propertyPath: soundsEffects.Array.data[5].name
-      value: PowerUPClicked
-      objectReference: {fileID: 0}
     - target: {fileID: 5448439761063024769, guid: ce85097aea0079a41aaf1aa8a6f7f011, type: 3}
       propertyPath: m_Name
       value: Manager

@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
             case GameStates.InMenu:
                 UIManager.Instance.DeactivateScore();
                 UIManager.Instance.DeactivatePowerUpBox();
+                SoundManager.Instance.StopAllMusic();
+                SoundManager.Instance.PlayMusic("Acceuil");
                 //Debug.Log("InMenu");
                 break;
             case GameStates.InGame:

@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text scoreText;
     //[SerializeField] Animator textAnimator;
     //[SerializeField] TMP_Text scoreAddText;
+    List<string> music;
+    int track;
     #endregion
 
     public static UIManager Instance { get; private set; }
@@ -32,6 +34,9 @@ public class UIManager : MonoBehaviour
     {
         Instance = this;
         ActivateMenu();
+        music.Add("PsyKick");
+        music.Add("Acceleron");
+        music.Add("AngryRobot");
     }
 
     void Update()
@@ -39,6 +44,12 @@ public class UIManager : MonoBehaviour
         
     }
 
+    public void ChooseMusic()
+    {
+        track = Random.Range(0, music.Count);
+        SoundManager.Instance.PlayMusic(music[track]);
+
+    }
     public void ActivateMenu() //main menu
     {
         menu.SetActive(true);
@@ -138,6 +149,7 @@ public class UIManager : MonoBehaviour
         DeactivateMenu();
         ActivatePowerUpBox();
         ResetPowerUps();
+        ChooseMusic();
         GameManager.Instance.spawner.GetComponent<ProjectileSpawner>().DestroyAll();
         GameManager.Instance.barrier.GetComponent<Barrier>().ChangeLife(-3);
         //SoundManager.Instance.Play("Button");
