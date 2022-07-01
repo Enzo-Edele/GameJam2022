@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject score;
     [SerializeField] TMP_Text scoreText;
+    [SerializeField] TMP_Text scoreTextGameOver;
     //[SerializeField] Animator textAnimator;
     //[SerializeField] TMP_Text scoreAddText;
     List<string> music = new List<string>();
@@ -81,6 +82,7 @@ public class UIManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         menuGameOver.SetActive(true);
+        scoreTextGameOver.text = "Score : " + GameManager.Instance.score;
     }
     public void DeactivateMenuGameOver()
     {

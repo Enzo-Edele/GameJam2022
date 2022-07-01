@@ -21,8 +21,8 @@ public class ProjectileSpawner : MonoBehaviour
     void Start()
     {
         float rnd = baseY + sinMult * Mathf.Sin(Time.realtimeSinceStartup / 12.75f);
-        if (rnd > 3.5f)
-            rnd = 3.5f;
+        if (rnd > 2.5f)
+            rnd = 2.5f;
         timerSpawn = Random.Range(timeSpawnMin, rnd);
     }
 
