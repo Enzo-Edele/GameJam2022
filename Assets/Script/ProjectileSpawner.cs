@@ -20,7 +20,10 @@ public class ProjectileSpawner : MonoBehaviour
 
     void Start()
     {
-        timerSpawn = Random.Range(timeSpawnMin, baseY + sinMult * Mathf.Sin(Time.realtimeSinceStartup/12.75f));
+        float rnd = baseY + sinMult * Mathf.Sin(Time.realtimeSinceStartup / 12.75f);
+        if (rnd > 3.5f)
+            rnd = 3.5f;
+        timerSpawn = Random.Range(timeSpawnMin, rnd);
     }
 
     void Update()
@@ -29,7 +32,10 @@ public class ProjectileSpawner : MonoBehaviour
             timerSpawn -= Time.deltaTime;
         else if(timerSpawn <= 0)
         {
-            timerSpawn = Random.Range(timeSpawnMin, baseY + sinMult * Mathf.Sin(Time.realtimeSinceStartup / 12.75f));
+            float rnd = baseY + sinMult * Mathf.Sin(Time.realtimeSinceStartup / 12.75f);
+            if (rnd > 3.5f)
+                rnd = 3.5f;
+            timerSpawn = Random.Range(timeSpawnMin, rnd);
             Spawn();
         }
 

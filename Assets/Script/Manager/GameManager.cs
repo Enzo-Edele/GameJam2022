@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     public int dropRate = 2;
 
     public SpriteRenderer brick;
-    public List<Sprite> brickSprite;
+    public List<Sprite> brick1Sprite;
+    public List<Sprite> brick2Sprite;
     public List<Sprite> powerUpSprite;
     public float brickWidth;
     public float brickHeight;

@@ -10,6 +10,10 @@ public class Brick : MonoBehaviour
     /*[HideInInspector]*/public bool isSpine;
     public int spineIndex;
 
+    private void Start()
+    {
+        LifeChange(0);
+    }
     private void Update()
     {
         CleanNeighbor();
@@ -26,9 +30,9 @@ public class Brick : MonoBehaviour
         if (life <= 0)
             Destruct();
         else if (life == 1)
-            GetComponent<SpriteRenderer>().sprite = GameManager.Instance.brickSprite[0];
+            GetComponent<SpriteRenderer>().sprite = GameManager.Instance.brick1Sprite[Random.Range(0, GameManager.Instance.brick1Sprite.Count)];
         else if (life == 2)
-            GetComponent<SpriteRenderer>().sprite = GameManager.Instance.brickSprite[1];
+            GetComponent<SpriteRenderer>().sprite = GameManager.Instance.brick2Sprite[Random.Range(0, GameManager.Instance.brick2Sprite.Count)];
     }
 
     public void SetNeighbor(int index, List<Brick> homies)
