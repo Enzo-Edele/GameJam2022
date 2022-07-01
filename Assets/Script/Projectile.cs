@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
 
         //physique au start
         rb = this.GetComponent<Rigidbody2D>();
-        randNum = Random.Range(-5f, 5f);
+        randNum = Random.Range(-5f, 1f);
         Direction = new Vector2((0) - rb.position.x , (0 + randNum) - rb.position.y);
         rb.AddForce(Direction.normalized * 8, ForceMode2D.Impulse);
 
