@@ -1906,12 +1906,96 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
   soundsEffects:
   - name: Button
+    clip: {fileID: 8300000, guid: 608fff56672898a439dba7f88674f881, type: 3}
+    mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GameStart
+    clip: {fileID: 8300000, guid: f331e271af97df4498f827dbc591322c, type: 3}
+    mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rebound
+    clip: {fileID: 8300000, guid: 7cdf94eeef3a0094596684eb0b8226c1, type: 3}
+    mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: RowDown
+    clip: {fileID: 8300000, guid: b282277db3221004a80c40923addb229, type: 3}
+    mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Shoot
+    clip: {fileID: 8300000, guid: 1bb88604245e55f44a604a9724bdfbb6, type: 3}
+    mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PowerUPSpawn
+    clip: {fileID: 8300000, guid: 80b6b7d108e2a4d48b8edd3f3ecd0d52, type: 3}
+    mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SlowMo
+    clip: {fileID: 8300000, guid: d637dbfe1ab782547bd4c61c4ca2e23f, type: 3}
+    mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ShieldUp
+    clip: {fileID: 8300000, guid: 69ead097a31215a468b590b0a74eb438, type: 3}
+    mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: HP
+    clip: {fileID: 8300000, guid: 1db51caf51694c64cb681d6555bb8a9a, type: 3}
+    mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Barrage
+    clip: {fileID: 8300000, guid: af3474324f5e747439472988498bd859, type: 3}
+    mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Lose
     clip: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
     volume: 1
     loop: 0
     source: {fileID: 0}
-  musics: []
+  musics:
+  - name: PsyKick
+    clip: {fileID: 8300000, guid: dbf9c966cd9446446826be9946bca4ee, type: 3}
+    mixerGroup: {fileID: 0}
+    volume: 0.054
+    loop: 0
+    source: {fileID: 0}
+  - name: AngryRobot
+    clip: {fileID: 8300000, guid: 6130067ab4b503c419217a096a3a295f, type: 3}
+    mixerGroup: {fileID: 0}
+    volume: 0.054
+    loop: 0
+    source: {fileID: 0}
+  - name: Acceleron
+    clip: {fileID: 8300000, guid: 26aecdb94c78f1e4ea7aa111120b869c, type: 3}
+    mixerGroup: {fileID: 0}
+    volume: 0.054
+    loop: 0
+    source: {fileID: 0}
+  - name: Acceuil
+    clip: {fileID: 8300000, guid: 53b7894d114b8684d991471a695299d6, type: 3}
+    mixerGroup: {fileID: 0}
+    volume: 0.054
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &5448439760601417283
 GameObject:
   m_ObjectHideFlags: 0
