@@ -154,7 +154,7 @@ public class UIManager : MonoBehaviour
         ChooseMusic();
         GameManager.Instance.spawner.GetComponent<ProjectileSpawner>().DestroyAll();
         GameManager.Instance.barrier.GetComponent<Barrier>().ChangeLife(-3);
-        //SoundManager.Instance.Play("Button");
+        SoundManager.Instance.Play("GameStart");
         GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
         GameManager.Instance.tower.BuildTower();
         GameManager.Instance.UpdateScore(-GameManager.Instance.score);
@@ -165,7 +165,7 @@ public class UIManager : MonoBehaviour
         SoundManager.Instance.UnpauseMusic(tampon);
         DeactivatePauseMenu();
         Time.timeScale = 1f;
-        //SoundManager.Instance.Play("Button");
+        SoundManager.Instance.Play("GameStart");
         GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
         //resume movement and spawn
     }
@@ -179,24 +179,24 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         GameManager.Instance.tower.BuildTower();
         GameManager.Instance.UpdateScore(-GameManager.Instance.score);
-        //SoundManager.Instance.Play("Button");
+        SoundManager.Instance.Play("GameStart");
         GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
     }
     public void ButtonStartMenu() //go back to start menu from game over
     {
         DeactivateMenuGameOver();
         ActivateMenu();
-        //SoundManager.Instance.Play("Button");
+        SoundManager.Instance.Play("Button");
     }
     public void ButtonCredit() //launch credit
     {
-        //SoundManager.Instance.Play("Button");
+        SoundManager.Instance.Play("Button");
         GameManager.Instance.ChangeGameState(GameManager.GameStates.Credits);
         credits.SetActive(true);
     }
     public void ButtonQuit() //exit app
     {
-        //SoundManager.Instance.Play("Button");
+        SoundManager.Instance.Play("Button");
         Application.Quit();
     }
 

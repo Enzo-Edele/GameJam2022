@@ -55,15 +55,19 @@ public class PowerUps : MonoBehaviour
         switch (power)
         {
             case Power.Barrier:
+                SoundManager.Instance.Play("ShieldUp");
                 GameManager.Instance.barrier.GetComponent<Barrier>().ChangeLife(1);
                 break;
             case Power.SlowMotion:
+                SoundManager.Instance.Play("SlowMo");
                 GameManager.Instance.spawner.SlowMotion(true);
                 break;
             case Power.Destroy:
+                SoundManager.Instance.Play("Barrage");
                 GameManager.Instance.spawner.DestroyAll();
                 break;
             case Power.Life:
+                SoundManager.Instance.Play("HP");
                 GameManager.Instance.tower.LifeUp();
                 break;
         }

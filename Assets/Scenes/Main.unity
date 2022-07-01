@@ -1945,9 +1945,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fb8f2defd26cc5f4c84eee075da89b14, type: 3}
   powerUpSprite:
   - {fileID: 21300000, guid: d8d14c94af9f0a34a83ed4042f530c30, type: 3}
-  - {fileID: 21300000, guid: d8d14c94af9f0a34a83ed4042f530c30, type: 3}
-  - {fileID: 21300000, guid: d8d14c94af9f0a34a83ed4042f530c30, type: 3}
-  - {fileID: 21300000, guid: d8d14c94af9f0a34a83ed4042f530c30, type: 3}
+  - {fileID: 21300000, guid: b4681dd4cc1e4844a8f400b99409ccba, type: 3}
+  - {fileID: 21300000, guid: d249a592e311a1142a6b3766f110a410, type: 3}
+  - {fileID: 21300000, guid: de432151fb1346c46a31bc84b3d5e690, type: 3}
   brickWidth: 0
   brickHeight: 0
 --- !u!4 &5448439759670049515
