@@ -58,11 +58,14 @@ public class GameManager : MonoBehaviour
             case GameStates.InGame:
                 UIManager.Instance.ActivateScore();
                 UIManager.Instance.ActivatePowerUpBox();
+                SoundManager.Instance.PauseMusic("Acceuil");
                 //Debug.Log("InGame");
                 break;
             case GameStates.Pause:
                 UIManager.Instance.ActivateScore();
                 UIManager.Instance.ActivatePowerUpBox();
+                SoundManager.Instance.UnpauseMusic("Acceuil");
+                SoundManager.Instance.PauseMusic(UIManager.Instance.tampon);
                 //Debug.Log("Pause");
                 break;
             case GameStates.Credits:

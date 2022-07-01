@@ -25,8 +25,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text scoreText;
     //[SerializeField] Animator textAnimator;
     //[SerializeField] TMP_Text scoreAddText;
-    List<string> music;
+    List<string> music = new List<string>();
     int track;
+    public string tampon;
     #endregion
 
     public static UIManager Instance { get; private set; }
@@ -48,6 +49,7 @@ public class UIManager : MonoBehaviour
     {
         track = Random.Range(0, music.Count);
         SoundManager.Instance.PlayMusic(music[track]);
+        tampon = music[track];
 
     }
     public void ActivateMenu() //main menu
@@ -112,7 +114,7 @@ public class UIManager : MonoBehaviour
         powerUpBoxes.SetActive(false);
     }
 
-    public void GetPowerUp(PowerUps power, Color color)
+    public void GetPowerUp(PowerUps power, Sprite sprite)
     {
         if (powerUps != null)
             Destroy(powerUps.gameObject);
@@ -120,7 +122,7 @@ public class UIManager : MonoBehaviour
         powerUps.gameObject.transform.position = new Vector2(10, -7);
         powerUps.isSelect = true;
         spaceBarIcon.SetActive(true);
-        powerUpImage.color = color;
+        powerUpImage.sprite = sprite;
     }
     public void UsePowerUp()
     {
@@ -160,6 +162,7 @@ public class UIManager : MonoBehaviour
     //button option
     public void ButtonResume() //exit pause and resume game
     {
+        SoundManager.Instance.UnpauseMusic(tampon);
         DeactivatePauseMenu();
         Time.timeScale = 1f;
         //SoundManager.Instance.Play("Button");
