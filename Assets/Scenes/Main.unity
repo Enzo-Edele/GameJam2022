@@ -332,11 +332,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1992424076812506574, guid: 025c19944c0e79b4fbda6b52c72bc9fc, type: 3}
       propertyPath: width
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1992424076812506574, guid: 025c19944c0e79b4fbda6b52c72bc9fc, type: 3}
       propertyPath: height
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1992424076812506575, guid: 025c19944c0e79b4fbda6b52c72bc9fc, type: 3}
       propertyPath: m_RootOrder

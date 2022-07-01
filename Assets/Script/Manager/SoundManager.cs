@@ -130,6 +130,13 @@ public class SoundManager : MonoBehaviour
         }
         s.source.Stop();
     }
+    public void StopAllMusic()
+    {
+        foreach (Sound s in musics)
+        {
+            s.source.Stop();
+        }
+    }
 
     public void StopAllSoud()
     {
