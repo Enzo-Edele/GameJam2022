@@ -125,14 +125,20 @@ public class UIManager : MonoBehaviour
     void ResetPowerUps()
     {
         if (powerUps != null)
+        {
             Destroy(powerUps.gameObject);
+            powerUps = null;
+            spaceBarIcon.SetActive(false);
+            powerUpImage.color = Color.black;
+        }
     }
 
     public void ButtonStart() //start the game
     {
         DeactivateMenu();
-        powerUps = null;
         ActivatePowerUpBox();
+        ResetPowerUps();
+        GameManager.Instance.spawner.GetComponent<ProjectileSpawner>().DestroyAll();
         GameManager.Instance.barrier.GetComponent<Barrier>().ChangeLife(-3);
         //SoundManager.Instance.Play("Button");
         GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
@@ -152,8 +158,8 @@ public class UIManager : MonoBehaviour
     {
         DeactivateMenuGameOver();
         DeactivatePauseMenu();
-        powerUps = null;
-        ActivatePowerUpBox();
+        ResetPowerUps();
+        GameManager.Instance.spawner.GetComponent<ProjectileSpawner>().DestroyAll();
         GameManager.Instance.barrier.GetComponent<Barrier>().ChangeLife(-3);
         Time.timeScale = 1f;
         GameManager.Instance.tower.BuildTower();
