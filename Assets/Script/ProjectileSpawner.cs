@@ -75,7 +75,7 @@ public class ProjectileSpawner : MonoBehaviour
     }
     public void DestroyAll()
     {
-        SoundManager.Instance.Play("Barrage");
+        
         for(int i = 0; i < projectiles.Count; i++)
         {
             Destroy(projectiles[i]);
@@ -86,7 +86,7 @@ public class ProjectileSpawner : MonoBehaviour
     {
         if (active && slowMotionTimer == 0)
         {
-            SoundManager.Instance.Play("SlowMo");
+
             Time.timeScale = 0.5f;
             go = Instantiate(slowFDBK, Vector2.zero, Quaternion.identity);
             slowMotionTimer = slowMotionTime;

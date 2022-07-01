@@ -32,17 +32,14 @@ public class Barrier : MonoBehaviour
         else if (life == 1)
         {
             gameObject.SetActive(true);
-            SoundManager.Instance.Play("ShieldUp");
             GetComponent<SpriteRenderer>().color = Color.grey;
         }
         else if (life == 2)
         {
             GetComponent<SpriteRenderer>().color = Color.cyan;
-            SoundManager.Instance.Play("ShieldUp");
         }
         else if (life == 3)
         {
-            SoundManager.Instance.Play("ShieldUp");
             GetComponent<SpriteRenderer>().color = Color.blue;
         }
 

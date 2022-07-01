@@ -68,7 +68,7 @@ public class Tower : MonoBehaviour
     }
     public void LifeUp()
     {
-        SoundManager.Instance.Play("HP");
+        
         int check = 1;
         bool apply = false;
         while (!apply && check < 10)
