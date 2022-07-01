@@ -5712,7 +5712,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -131.61427, y: 0, z: -20.876007, w: 0}
+  m_margin: {x: 0.29060367, y: -0.7715416, z: -20.876007, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5725,7 +5725,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7356615998934514930}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5734,8 +5734,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 52.254173, y: 130.7259}
-  m_SizeDelta: {x: 304.5082, y: 84.54822}
+  m_AnchoredPosition: {x: -5, y: 115.300026}
+  m_SizeDelta: {x: 642.4482, y: 193.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7356615998934514930
 GameObject:
@@ -5913,7 +5913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &7356616000194637781
 CanvasRenderer:
   m_ObjectHideFlags: 0
