@@ -38,5 +38,8 @@ public class Barrier : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.cyan;
         else if (life == 3)
             GetComponent<SpriteRenderer>().color = Color.blue;
+
+        if (life < 0)
+            life = 0;
     }
 }

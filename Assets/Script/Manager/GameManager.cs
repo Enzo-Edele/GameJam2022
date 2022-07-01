@@ -48,18 +48,22 @@ public class GameManager : MonoBehaviour
         {
             case GameStates.InMenu:
                 UIManager.Instance.DeactivateScore();
+                UIManager.Instance.DeactivatePowerUpBox();
                 //Debug.Log("InMenu");
                 break;
             case GameStates.InGame:
                 UIManager.Instance.ActivateScore();
+                UIManager.Instance.ActivatePowerUpBox();
                 //Debug.Log("InGame");
                 break;
             case GameStates.Pause:
                 UIManager.Instance.ActivateScore();
+                UIManager.Instance.ActivatePowerUpBox();
                 //Debug.Log("Pause");
                 break;
             case GameStates.Credits:
                 UIManager.Instance.DeactivateScore();
+                UIManager.Instance.DeactivatePowerUpBox();
                 //Debug.Log("Credits");
                 break;
         }
@@ -70,6 +74,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && gameState == GameStates.InGame)
         {
             UIManager.Instance.ActivatePauseMenu();
+            Time.timeScale = 0f;
             ChangeGameState(GameStates.Pause);
         }
         if (Input.GetKeyDown(KeyCode.Space) && gameState == GameStates.InGame)
@@ -86,7 +91,6 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("Loose");
         UIManager.Instance.ActivateMenuGameOver();
         ChangeGameState(GameStates.InMenu);
     }

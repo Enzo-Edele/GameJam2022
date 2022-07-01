@@ -23,8 +23,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject score;
     [SerializeField] TMP_Text scoreText;
-    [SerializeField] Animator textAnimator;
-    [SerializeField] TMP_Text scoreAddText;
+    //[SerializeField] Animator textAnimator;
+    //[SerializeField] TMP_Text scoreAddText;
     #endregion
 
     public static UIManager Instance { get; private set; }
@@ -66,6 +66,7 @@ public class UIManager : MonoBehaviour
     }
     public void ActivateMenuGameOver() //gameOver menu
     {
+        pauseMenu.SetActive(false);
         menuGameOver.SetActive(true);
     }
     public void DeactivateMenuGameOver()
@@ -88,8 +89,16 @@ public class UIManager : MonoBehaviour
         if (point > 0)
         {
             //textAnimator.SetTrigger("Add");
-            scoreAddText.text = "+" + point;
+            //scoreAddText.text = "+" + point;
         }
+    }
+    public void ActivatePowerUpBox() //activate score
+    {
+        powerUpBoxes.SetActive(true);
+    }
+    public void DeactivatePowerUpBox()
+    {
+        powerUpBoxes.SetActive(false);
     }
 
     public void GetPowerUp(PowerUps power, Color color)
@@ -109,24 +118,32 @@ public class UIManager : MonoBehaviour
             powerUps.Use();
             Destroy(powerUps.gameObject);
             powerUps = null;
-            spaceBarIcon.SetActive(false);
-            powerUpImage.color = Color.black;
         }
+        spaceBarIcon.SetActive(false);
+        powerUpImage.color = Color.black;
+    }
+    void ResetPowerUps()
+    {
+        if (powerUps != null)
+            Destroy(powerUps.gameObject);
     }
 
     public void ButtonStart() //start the game
     {
         DeactivateMenu();
+        powerUps = null;
+        ActivatePowerUpBox();
+        GameManager.Instance.barrier.GetComponent<Barrier>().ChangeLife(-3);
         //SoundManager.Instance.Play("Button");
         GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
         GameManager.Instance.tower.BuildTower();
         GameManager.Instance.UpdateScore(-GameManager.Instance.score);
-        //deactive menuObject
     }
     //button option
     public void ButtonResume() //exit pause and resume game
     {
         DeactivatePauseMenu();
+        Time.timeScale = 1f;
         //SoundManager.Instance.Play("Button");
         GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
         //resume movement and spawn
@@ -134,6 +151,11 @@ public class UIManager : MonoBehaviour
     public void ButtonRetry() //restart game from game over
     {
         DeactivateMenuGameOver();
+        DeactivatePauseMenu();
+        powerUps = null;
+        ActivatePowerUpBox();
+        GameManager.Instance.barrier.GetComponent<Barrier>().ChangeLife(-3);
+        Time.timeScale = 1f;
         GameManager.Instance.tower.BuildTower();
         GameManager.Instance.UpdateScore(-GameManager.Instance.score);
         //SoundManager.Instance.Play("Button");
