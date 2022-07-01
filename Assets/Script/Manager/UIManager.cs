@@ -201,6 +201,10 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.ChangeGameState(GameManager.GameStates.Credits);
         credits.SetActive(true);
     }
+    public void ButtonCreditClose() //launch credit
+    {
+        credits.SetActive(false);
+    }
     public void ButtonQuit() //exit app
     {
         SoundManager.Instance.Play("Button");
