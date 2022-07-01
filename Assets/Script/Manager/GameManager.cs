@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public SpriteRenderer brick;
     public List<Sprite> brickSprite;
+    public List<Sprite> powerUpSprite;
     public float brickWidth;
     public float brickHeight;
 
