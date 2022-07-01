@@ -13,8 +13,8 @@ public class Brick : MonoBehaviour
     private void Update()
     {
         CleanNeighbor();
-        if (isSpine)
-            GetComponent<SpriteRenderer>().color = Color.red;
+        /*if (isSpine)
+            GetComponent<SpriteRenderer>().color = Color.red;*/
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -26,9 +26,9 @@ public class Brick : MonoBehaviour
         if (life <= 0)
             Destruct();
         else if (life == 1)
-            GetComponent<SpriteRenderer>().color = Color.green;
+            GetComponent<SpriteRenderer>().sprite = GameManager.Instance.brickSprite[0];
         else if (life == 2)
-            GetComponent<SpriteRenderer>().color = Color.blue;
+            GetComponent<SpriteRenderer>().sprite = GameManager.Instance.brickSprite[1];
     }
 
     public void SetNeighbor(int index, List<Brick> homies)
