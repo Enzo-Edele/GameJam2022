@@ -59,6 +59,7 @@ public class Brick : MonoBehaviour
     {
         Vector3 pos = transform.position;
         pos.y -= GameManager.Instance.brickHeight;
+        SoundManager.Instance.Play("RowDown");
         transform.position = pos;
         for (int i = 0; i < neighbor.Count; i++)
         {

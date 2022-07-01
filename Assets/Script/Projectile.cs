@@ -54,6 +54,7 @@ public class Projectile : MonoBehaviour
     private void OnMouseDown()
     {
         GameManager.Instance.UpdateScore(100);
+        SoundManager.Instance.Play("Shoot");
         //Trigger Boom
         if (boomAnim)
         {
@@ -87,6 +88,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.layer == 6)
         {
+            SoundManager.Instance.Play("Rebound");
             reboundCount++;
         }
     }
