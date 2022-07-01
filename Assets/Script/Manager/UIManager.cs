@@ -133,7 +133,7 @@ public class UIManager : MonoBehaviour
             powerUps = null;
         }
         spaceBarIcon.SetActive(false);
-        powerUpImage.color = Color.black;
+        powerUpImage.sprite = null;
     }
     void ResetPowerUps()
     {
@@ -142,7 +142,7 @@ public class UIManager : MonoBehaviour
             Destroy(powerUps.gameObject);
             powerUps = null;
             spaceBarIcon.SetActive(false);
-            powerUpImage.color = Color.black;
+            powerUpImage.sprite = null;
         }
     }
 

@@ -48,7 +48,7 @@ public class PowerUps : MonoBehaviour
     {
         //Use();
         SoundManager.Instance.Play("PowerUPClicked");
-        //UIManager.Instance.GetPowerUp(this, sprite);
+        UIManager.Instance.GetPowerUp(this, sprite);
     }
     public void Use()
     {
