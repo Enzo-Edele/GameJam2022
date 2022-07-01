@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LostButtons
   m_EditorClassIdentifier: 
   colorMode: 3
-  topLeft: {r: 1, g: 0.5411765, b: 0.011764706, a: 1}
-  topRight: {r: 1, g: 0.5411765, b: 0.011764706, a: 1}
-  bottomLeft: {r: 1, g: 0.972549, b: 0, a: 1}
-  bottomRight: {r: 1, g: 0.5411765, b: 0.011764706, a: 1}
+  topLeft: {r: 1, g: 0.32987595, b: 0.011764705, a: 1}
+  topRight: {r: 1, g: 0.32941177, b: 0.011764707, a: 1}
+  bottomLeft: {r: 1, g: 0.32941177, b: 0.011764707, a: 1}
+  bottomRight: {r: 1, g: 0.32941177, b: 0.011764707, a: 1}
