@@ -5,6 +5,8 @@ using UnityEngine;
 public class ProjectileSpawner : MonoBehaviour
 {
     [SerializeField] GameObject projectile;
+    [SerializeField] GameObject slowFDBK;
+    GameObject go;
     public List<GameObject> projectiles = new List<GameObject>();
     public float projectileSpeed;
     public float speedVariation;
@@ -78,14 +80,18 @@ public class ProjectileSpawner : MonoBehaviour
         if (active && slowMotionTimer == 0)
         {
             Time.timeScale = 0.5f;
+            go = Instantiate(slowFDBK, Vector2.zero, Quaternion.identity);
             slowMotionTimer = slowMotionTime;
         }
         else if (!active)
         {
             Time.timeScale = 1f;
+            Destroy(go);
             Debug.Log("normal");
         }
         else if (active)
+        {
             slowMotionTimer = slowMotionTime;
+        }
     }
 }
