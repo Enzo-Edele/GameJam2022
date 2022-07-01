@@ -37,7 +37,7 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         //spinning Sprite
-        spriteRot.transform.Rotate(0, 0, -450 * Time.deltaTime);
+        spriteRot.transform.Rotate(0, 0, 450 * Time.deltaTime);
         if (reboundCount >= 3)
         {
             Destroy(this.gameObject);

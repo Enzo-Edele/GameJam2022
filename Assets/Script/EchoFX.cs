@@ -20,7 +20,7 @@ public class EchoFX : MonoBehaviour
         if (timeBtwEchos <= 0)
         {
             GameObject instance = Instantiate(echo, transform.position, Quaternion.identity);
-            Destroy(instance, 5f);
+            Destroy(instance, 3f);
             timeBtwEchos = startTimeBtwEchos;
         }
         else

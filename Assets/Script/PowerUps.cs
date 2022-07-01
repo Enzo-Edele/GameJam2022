@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUps : MonoBehaviour
 {
-    public Color color;
+    public Sprite sprite;
     public bool isSelect = false;
     Rigidbody2D rb;
     Vector2 customUp;
@@ -28,13 +28,13 @@ public class PowerUps : MonoBehaviour
 
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         if (rnd == 0)
-            color = renderer.color = Color.cyan;
+            sprite = renderer.sprite = GameManager.Instance.powerUpSprite[0];
         if (rnd == 1)
-            color = renderer.color = Color.gray;
+            sprite = renderer.sprite = GameManager.Instance.powerUpSprite[1];
         if (rnd == 2)
-            color = renderer.color = Color.red;
+            sprite = renderer.sprite = GameManager.Instance.powerUpSprite[2];
         if (rnd == 3)
-            color = renderer.color = Color.green;
+            sprite = renderer.sprite = GameManager.Instance.powerUpSprite[3];
     }
     private void Update()
     {
@@ -48,7 +48,7 @@ public class PowerUps : MonoBehaviour
     {
         //Use();
         SoundManager.Instance.Play("PowerUPClicked");
-        UIManager.Instance.GetPowerUp(this, color);
+        //UIManager.Instance.GetPowerUp(this, sprite);
     }
     public void Use()
     {
