@@ -171,13 +171,13 @@ MonoBehaviour:
   - name: Button
     clip: {fileID: 8300000, guid: 608fff56672898a439dba7f88674f881, type: 3}
     mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
-    volume: 0.5
+    volume: 1
     loop: 0
     source: {fileID: 0}
   - name: GameStart
     clip: {fileID: 8300000, guid: f331e271af97df4498f827dbc591322c, type: 3}
     mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
-    volume: 0.5
+    volume: 1
     loop: 0
     source: {fileID: 0}
   - name: Rebound
@@ -189,7 +189,7 @@ MonoBehaviour:
   - name: RowDown
     clip: {fileID: 8300000, guid: b282277db3221004a80c40923addb229, type: 3}
     mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
-    volume: 0.5
+    volume: 0.8
     loop: 0
     source: {fileID: 0}
   - name: Shoot
@@ -207,13 +207,13 @@ MonoBehaviour:
   - name: SlowMo
     clip: {fileID: 8300000, guid: d637dbfe1ab782547bd4c61c4ca2e23f, type: 3}
     mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
-    volume: 0.5
+    volume: 1
     loop: 0
     source: {fileID: 0}
   - name: ShieldUp
     clip: {fileID: 8300000, guid: 69ead097a31215a468b590b0a74eb438, type: 3}
     mixerGroup: {fileID: 24300002, guid: b6724a92f1aca884ea7d3b2d4191e508, type: 2}
-    volume: 0.5
+    volume: 0.9
     loop: 0
     source: {fileID: 0}
   - name: HP
@@ -244,7 +244,7 @@ MonoBehaviour:
   - name: Acceleron
     clip: {fileID: 8300000, guid: 26aecdb94c78f1e4ea7aa111120b869c, type: 3}
     mixerGroup: {fileID: 0}
-    volume: 0.054
+    volume: 0.4
     loop: 1
     source: {fileID: 0}
   - name: Acceuil

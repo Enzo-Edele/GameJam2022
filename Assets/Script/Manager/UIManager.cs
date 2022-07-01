@@ -48,6 +48,10 @@ public class UIManager : MonoBehaviour
 
     public void ChooseMusic()
     {
+        if(tampon != null)
+        {
+            SoundManager.Instance.StopMusic(tampon);
+        }
         track = Random.Range(0, music.Count);
         SoundManager.Instance.PlayMusic(music[track]);
         tampon = music[track];
@@ -167,7 +171,7 @@ public class UIManager : MonoBehaviour
         SoundManager.Instance.UnpauseMusic(tampon);
         DeactivatePauseMenu();
         Time.timeScale = 1f;
-        SoundManager.Instance.Play("GameStart");
+        SoundManager.Instance.Play("Button");
         GameManager.Instance.ChangeGameState(GameManager.GameStates.InGame);
         //resume movement and spawn
     }
@@ -176,6 +180,7 @@ public class UIManager : MonoBehaviour
         DeactivateMenuGameOver();
         DeactivatePauseMenu();
         ResetPowerUps();
+        ChooseMusic();
         GameManager.Instance.spawner.GetComponent<ProjectileSpawner>().DestroyAll();
         GameManager.Instance.barrier.GetComponent<Barrier>().ChangeLife(-3);
         Time.timeScale = 1f;
